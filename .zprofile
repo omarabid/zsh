@@ -1,24 +1,18 @@
-alias l='exa -la'
+# Aliases
+alias l='exa -la' # exa
 alias ll='exa -la --tree'
-alias cat='bat'
-alias h='hexyl'
+alias cat='bat' # bat
+alias h='hexyl' # hexyl
 
+# Cargo installed Binaries
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Created by `userpath` on 2019-10-16 00:30:44
-export PATH="$PATH:/Users/omarabid/.local/bin"
-
-# Created by `userpath` on 2019-10-16 00:32:06
+# Python 3.7
 export PATH="$PATH:/Users/omarabid/Library/Python/3.7/bin"
 
 # Manually installed Binaries
 export PATH="$PATH:/Users/omarabid/Documents/apps"
+export PATH="$PATH:/Users/omarabid/.local/bin"
 
-##
-# Your previous /Users/omarabid/.zprofile file was backed up as /Users/omarabid/.zprofile.macports-saved_2019-10-23_at_21:53:30
-##
-
-# MacPorts Installer addition on 2019-10-23_at_21:53:30: adding an appropriate PATH variable for use with MacPorts.
+# MacPorts Binaries
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
