@@ -1,6 +1,10 @@
 # Prompt
 PROMPT='%~ > '
 
+## Plugins
+##
+source dotenv.plugin.zsh
+
 # Aliases
 alias l='exa -la' # exa
 alias ll='exa -la --tree --ignore-glob=.git'
@@ -26,7 +30,7 @@ setopt pushdminus
 
 # Run exa after cd
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ l; }
+add-zsh-hook -Uz chpwd (){ l; source_env; }
 
 # Completion
 setopt auto_menu
