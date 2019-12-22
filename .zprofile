@@ -1,7 +1,5 @@
 # Prompt
-setopt prompt_subst
-source /Users/omarabid/Documents/Config/zsh/zsh-git-prompt/zshrc.sh
-PROMPT='%~ $(git_super_status)> '
+PROMPT='%~ > '
 
 # Aliases
 alias l='exa -la' # exa
