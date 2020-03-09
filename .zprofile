@@ -3,13 +3,14 @@ PROMPT='%~ > '
 
 ## Plugins
 ##
-source dotenv.plugin.zsh
+source /Users/omarabid/Documents/Config/zsh/dotenv.plugin.zsh
 
 # Aliases
 alias l='exa -la' # exa
 alias ll='exa -la --tree --ignore-glob=.git'
 alias cat='bat' # bat
 alias h='hexyl' # hexyl
+alias n='nvim' #nvim
 
 # History size
 HISTFILE=$HOME/.zsh_history
