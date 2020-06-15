@@ -4,6 +4,8 @@ PROMPT='%~ > '
 ## Plugins
 ##
 source /home/omarabid/Documents/Config/zsh/dotenv.plugin.zsh
+source /home/omarabid/Documents/Config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 # ENV Variables
 export TUIR_EDITOR=vim
