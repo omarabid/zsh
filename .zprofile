@@ -61,3 +61,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 # Start i3
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx "/usr/bin/i3"; fi
+
+export PATH=/home/omarabid/.local/bin:$PATH
+export GNUPGHOME=/home/omarabid/.gnupg/ledger
+export PATH=/home/omarabid/go/bin:$PATH
