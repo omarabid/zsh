@@ -1,7 +1,10 @@
 # Prompt
 PROMPT='%~ > '
+## Load configuration files
+##
+for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 
-## Plugins
+## Load Plugins
 ##
 source /home/omarabid/Documents/Config/zsh/dotenv.plugin.zsh
 source /home/omarabid/Documents/Config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
