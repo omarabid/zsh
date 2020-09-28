@@ -2,6 +2,7 @@
 ##
 source $(dirname ${(%):-%x})/dotenv.plugin.zsh
 source $(dirname ${(%):-%x})/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(dirname ${(%):-%x})/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(dirname ${(%):-%x})/alien/alien.zsh
 
 ## Load configuration files
