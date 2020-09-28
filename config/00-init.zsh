@@ -1,3 +1,3 @@
-autoload -Uz compinit promptinit
-compinit
+autoload -U colors && colors
+autoload -Uz promptinit
 promptinit
