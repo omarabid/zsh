@@ -5,6 +5,7 @@ source $(dirname ${(%):-%x})/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(dirname ${(%):-%x})/zsh-bd/bd.zsh
 source $(dirname ${(%):-%x})/zsh-clipboard/clipboard.plugin.zsh
 source $(dirname ${(%):-%x})/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(dirname ${(%):-%x})/zsh-copy-pasta/copy-pasta.plugin.zsh
 source $(dirname ${(%):-%x})/alien/alien.zsh
 
 ## Load configuration files
