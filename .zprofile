@@ -6,6 +6,7 @@ source $(dirname ${(%):-%x})/zsh-bd/bd.zsh
 source $(dirname ${(%):-%x})/zsh-clipboard/clipboard.plugin.zsh
 source $(dirname ${(%):-%x})/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(dirname ${(%):-%x})/zsh-copy-pasta/copy-pasta.plugin.zsh
+echo 'source `npm root -g`/zsh-history-enquirer/scripts/zsh-history-enquirer.plugin.zsh' >> ~/.zshrc
 source $(dirname ${(%):-%x})/alien/alien.zsh
 
 ## Load configuration files

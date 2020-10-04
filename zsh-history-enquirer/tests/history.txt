@@ -1,0 +1,20 @@
+: 1568797109:0;233333
+: 1568797110:0;114514
+: 1568797111:0;git log --pretty=fuller --date=iso -n 1
+: 1568797112:0;echo earlier command
+: 1568797113:0;ffmpeg -i "input.mp4" -vf reverse reversed.mp4
+: 1568797114:0;where git
+: 1568797115:0;echo author zthxxx
+: 1568797116:0;cd Documents
+: 1568797117:0;cd Temporary
+: 1568797118:0;md5sum --help
+: 1568797118:0;git status
+: 1568797119:0;cat <<< 123
+: 1568797120:0;where php
+: 1568797121:0;pwgen --help
+: 1568797123:0;echo "\
+    Enhance history search (ctrl+R), \
+    review and choose, \
+    multiline is also supported \
+" > /dev/null
+: 1568797124:0;echo zsh-history-enquirer
