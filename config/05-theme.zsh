@@ -1,5 +1,6 @@
 # Theme style 
 export ALIEN_THEME="gruvbox"
+export ALIEN_KEEP_PROMPT=0
 
 # Left Prompt
 export ALIEN_SECTIONS_LEFT=(
