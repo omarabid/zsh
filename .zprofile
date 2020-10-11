@@ -1,13 +1,13 @@
 ## Load Plugins
 ##
-source $(dirname ${(%):-%x})/dotenv.plugin.zsh
-source $(dirname ${(%):-%x})/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(dirname ${(%):-%x})/zsh-bd/bd.zsh
-source $(dirname ${(%):-%x})/zsh-clipboard/clipboard.plugin.zsh
-source $(dirname ${(%):-%x})/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(dirname ${(%):-%x})/zsh-copy-pasta/copy-pasta.plugin.zsh
-echo 'source `npm root -g`/zsh-history-enquirer/scripts/zsh-history-enquirer.plugin.zsh' >> ~/.zshrc
-source $(dirname ${(%):-%x})/alien/alien.zsh
+source $(dirname ${(%):-%x})/plugins/zsh-dotenv/dotenv.plugin.zsh
+source $(dirname ${(%):-%x})/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(dirname ${(%):-%x})/plugins/zsh-bd/bd.zsh
+source $(dirname ${(%):-%x})/plugins/zsh-clipboard/clipboard.plugin.zsh
+source $(dirname ${(%):-%x})/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(dirname ${(%):-%x})/plugins/zsh-copy-pasta/copy-pasta.plugin.zsh
+#echo 'source `npm root -g`/plugins/zsh-history-enquirer/scripts/zsh-history-enquirer.plugin.zsh' >> ~/.zshrc
+source $(dirname ${(%):-%x})/plugins/alien/alien.zsh
 
 ## Load configuration files
 ##
