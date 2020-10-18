@@ -1,0 +1,18 @@
+#autoload
+
+(( compstate[nmatches] > 1 )) &&
+  return 1
+_autocomplete.is_glob &&
+  return 1
+[[ $_completer == expand ]] ||
+  return 1
+
+local match=${(Q)compstate[unambiguous]}
+
+[[ $match == ($words[CURRENT]|$compstate[unambiguous]) ]] &&
+  return 1
+
+local expl
+_description requoted expl 'human-readable'
+local display=( "$match" )
+compadd "$expl[@]" -qS ' ' -QU -d display - ${(q+)match}

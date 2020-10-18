@@ -1,0 +1,114 @@
+#!/bin/zsh
+emulate -L zsh -o extendedglob
+
+# Workaround for https://github.com/zdharma/zinit/issues/366
+[[ -v functions[.zinit-shade-off] ]] && .zinit-shade-off "${___mode:-load}"
+
+unfunction compinit
+autoload -Uz compinit
+
+local REPLY
+typeset -g _comp_dumpfile="${_comp_dumpfile:-${ZDOTDIR:-$HOME}/.zcompdump}"
+local -a newer=( ${^fpath}/***/*(Ne:'[[ $REPLY -nt $_comp_dumpfile ]]:':Y1) )
+
+if [[ -z "$functions[_autocomplete.extras]" || ! -e "$_comp_dumpfile" || -e $newer ]]; then
+
+  # Decrease Oh My Zsh start-up time. See below.
+  [[ -e "$ZSH_COMPDUMP" ]] && local -a omzdump=( ${(f)"$(<$ZSH_COMPDUMP)"} )
+
+  [[ -e "$_comp_dumpfile" ]] && command rm -f "$_comp_dumpfile"
+  compinit -C -d "$_comp_dumpfile"
+
+  # Prevent Oh My Zsh from deleting comp dump file.
+  [[ -e "$ZSH_COMPDUMP" ]] &&
+    tee -a "$ZSH_COMPDUMP" &>/dev/null <<EOF
+$omzdump[-2]
+$omzdump[-1]
+EOF
+
+fi
+
+local args; for args in $_autocomplete__compdef[@]; do
+  compdef ${(@Q)${(z)args}}
+done
+
+_comp_options+=(
+  globdots globstarshort numericglobsort
+  NO_alwaystoend NO_caseglob NO_completealiases NO_completeinword
+  NO_globcomplete NO_listbeep NO_listtypes NO_markdirs
+)
+
+.autocomplete.patch _main_complete
+_main_complete() {
+  local word=$PREFIX$SUFFIX
+  local _autocomplete__tail=${word##*/}
+  local _autocomplete__head=${word%%$_autocomplete__tail}
+  local _autocomplete__alnum=${_autocomplete__tail##[^[:alnum:]]##}
+  local _autocomplete__punct=${_autocomplete__tail%%$_autocomplete__alnum}
+
+  local +h -a comppostfuncs=(
+    _autocomplete.extras
+    _autocomplete.long_list
+    "$comppostfuncs[@]"
+  )
+  compstate[insert]='automenu'
+  .autocomplete._main_complete "$@"
+}
+
+.autocomplete.patch _default
+_default() {
+  .autocomplete._default
+  local -i ret=$?
+  _autocomplete.history_words
+  return $(( ret && ? ))
+}
+
+.autocomplete.patch _description
+_description() {
+  .autocomplete._description "$@"
+  local -i ret=$?
+  if [[ $3 == corrections ]]; then
+    _lastdescr=( "${(@)_lastdescr[1,-2]}" )
+  fi
+  return ret
+}
+
+.autocomplete.patch _complete
+_complete() {
+  local -i nmatches=$compstate[nmatches]
+  .autocomplete._complete "$@"
+  local -i ret=$?
+  (( compstate[nmatches] == nmatches )) && _comp_mesg=''
+  return ret
+}
+
+.autocomplete.patch _correct
+_correct() {
+  if [[ -v compstate[quote] || $words[CURRENT] == [$histchars]* ]] || _autocomplete.is_glob; then
+    return 1
+  fi
+
+  .autocomplete._correct "$@"
+}
+
+.autocomplete.patch _expand
+_expand() {
+  if _autocomplete.is_glob && [[ $WIDGET != _complete_help ]]; then
+    [[ $words[CURRENT] == *[*/] ]] ||
+      local ISUFFIX="*"
+    {
+      compadd() {
+        setopt localoptions listtypes
+        builtin compadd -f -W "${${${words[CURRENT]:#[~/]*}:+$PWD/}:-/}" "$@"
+      }
+      setopt localoptions NO_listtypes
+      .autocomplete._expand "$@"
+      local -i ret=$?
+    } always {
+      unfunction compadd
+    }
+    return ret
+  else
+    .autocomplete._expand "$@"
+  fi
+}

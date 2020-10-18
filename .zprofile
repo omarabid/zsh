@@ -8,10 +8,13 @@ source $(dirname ${(%):-%x})/plugins/zsh-syntax-highlighting/zsh-syntax-highligh
 source $(dirname ${(%):-%x})/plugins/zsh-copy-pasta/copy-pasta.plugin.zsh
 #echo 'source `npm root -g`/plugins/zsh-history-enquirer/scripts/zsh-history-enquirer.plugin.zsh' >> ~/.zshrc
 source $(dirname ${(%):-%x})/plugins/alien/alien.zsh
+source /etc/profile.d/autojump.zsh
 
 ## Load configuration files
 ##
 for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
+
+source $(dirname ${(%):-%x})/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 
 # Start i3

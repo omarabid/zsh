@@ -1,0 +1,18 @@
+#autoload
+
+[[ -z $BUFFER ]] &&
+  return 1
+[[ $compstate[old_list] == keep ]] &&
+  return 1
+[[ $curcontext == history-search:* ]] &&
+  return 1
+
+_autocomplete.recent_paths ||
+  _autocomplete.history_words
+
+_autocomplete.alias_expansions ||
+  _autocomplete.requoted ||
+  _autocomplete.unambiguous ||
+  _autocomplete.history_lines
+
+(( compstate[nmatches] > 0 ))

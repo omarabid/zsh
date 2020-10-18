@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if (( BUFFERLINES == 1 )); then
+  zle menu-select -w
+else
+  zle .down-line || zle .end-of-line
+fi

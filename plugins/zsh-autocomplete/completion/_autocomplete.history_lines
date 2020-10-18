@@ -1,0 +1,63 @@
+#autoload
+
+(( $#words > 1 || CURRENT > 1 )) &&
+  return 1
+[[ $curcontext == *(approximate|correct|spell)* ]] &&
+  return 1
+
+local word=$words[1]
+if [[ $curcontext != history-search:* ]]; then
+  [[ -z $BUFFER ]] &&
+    return 1
+  (( compstate[nmatches] > _autocomplete__max_lines() )) &&
+    return 1
+
+  word=${(b)word}
+fi
+
+local -a hits displays=()
+local numpat="[ [:digit:]](#c$#HISTNO)  "
+
+local -aU events=()
+local -a queries=( '*' ); [[ -z $BUFFER ]] ||
+  queries=( '*(#ia'{0..7}")$~word*" )
+local q; for q in $queries[@]; do
+  hits=()
+  print -v hits -f "%$#HISTNO.${#HISTNO}s  %s" "${(kv@)history[(R)$~q]}"
+  events+=( ${hits[@]:#$~numpat$word} )
+  [[ -n $events ]] &&
+    break
+done
+
+local -i max_lines=1; [[ $curcontext == history-search:* ]] &&
+  max_lines=$(( _autocomplete__max_lines() ))
+events=( ${(@aO)events[1,max_lines]} )
+
+displays=( $events[@] )
+local -A subs=(
+  '{ ;'   '{'
+  '; }'   '}'
+  ' () {' '() {'
+  '= ()' '=()'
+  $'\n'   '\n'
+)
+local k v num
+local -i i wid=$(( $COLUMNS - 1 ))
+for i in {1..$#displays[@]}; do
+  num=${(M)displays[i]#$~numpat}
+  displays[i]=${(Z+C+j: :)displays[i]#$num}
+  for k v in ${(@kv)subs}; do
+    displays[i]=${displays[i]//$k/$v}
+  done
+  displays[i]=${displays[i]// \;/\;}
+  displays[i]=${(r:$wid:):-$num$displays[i]}
+done
+
+local -a suffix_opts=()
+[[ $curcontext == history-search:* ]] &&
+  suffix_opts=( -S ';' -r '^ ' )
+
+local _comp_no_ignore=1
+local expl
+_description -2V history-lines expl 'history match'
+compadd "$expl[@]" -QU $suffix_opts -ld displays - ${${events[@]}##$~numpat}

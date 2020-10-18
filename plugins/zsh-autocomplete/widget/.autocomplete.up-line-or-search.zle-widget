@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if (( BUFFERLINES == 1 )); then
+  zle history-search -w
+else
+  zle .up-line || zle .beginning-of-line
+fi

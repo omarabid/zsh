@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+_autocomplete__max_lines() {
+  emulate -L zsh -o extendedglob
+
+  local max_lines; zstyle -s ":autocomplete:$curcontext" max-lines max_lines ||
+    max_lines='50%'
+
+  if [[ $max_lines == *% ]]; then
+    (( max_lines = (LINES - BUFFERLINES - 1) * ${max_lines%%\%} / 100 ))
+  else
+    (( max_lines = min(max_lines, LINES - BUFFERLINES - 1) ))
+  fi
+  return max_lines
+}
+
+functions -Ms _autocomplete__max_lines
