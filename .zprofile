@@ -6,7 +6,6 @@ source $(dirname ${(%):-%x})/plugins/zsh-bd/bd.zsh
 source $(dirname ${(%):-%x})/plugins/zsh-clipboard/clipboard.plugin.zsh
 source $(dirname ${(%):-%x})/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(dirname ${(%):-%x})/plugins/zsh-copy-pasta/copy-pasta.plugin.zsh
-#echo 'source `npm root -g`/plugins/zsh-history-enquirer/scripts/zsh-history-enquirer.plugin.zsh' >> ~/.zshrc
 source $(dirname ${(%):-%x})/plugins/alien/alien.zsh
 source /etc/profile.d/autojump.zsh
 
@@ -15,6 +14,12 @@ source /etc/profile.d/autojump.zsh
 for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 
 source $(dirname ${(%):-%x})/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# custom keybinds
+bindkey "^[OC" autosuggest-accept
+
+## Clear terminal
+clear
 
 
 # Start i3
