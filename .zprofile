@@ -63,6 +63,6 @@ fi
 # 7 - derive aplha
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty7 ]];
 then
-    cat /home/omarabid/.config/i3/config /home/omarabid/.config/i3/spaces/daplha > /home/omarabid/.config/i3/tmp/daconf;
+    cat /home/omarabid/.config/i3/config /home/omarabid/.config/i3/spaces/dalpha > /home/omarabid/.config/i3/tmp/daconf;
     startx /usr/bin/i3 -c /home/omarabid/.config/i3/tmp/daconf --;
 fi
