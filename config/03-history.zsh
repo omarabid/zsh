@@ -1,7 +1,7 @@
 # History size
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=50000
-SAVEHIST=10000
+HISTSIZE=500000
+SAVEHIST=500000
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
