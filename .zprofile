@@ -7,7 +7,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle Tarrasch/zsh-bd
 antigen bundle zpm-zsh/clipboard
 antigen bundle ChrisPenner/copy-pasta
-antigen theme eendroroy/alien
+antigen theme romkatv/powerlevel10k
 
 antigen apply
 
