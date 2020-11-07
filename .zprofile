@@ -1,12 +1,19 @@
+# Load Antigen plugin manager
+source $(dirname ${(%):-%x})/antigen/antigen.zsh
+
+# Syntax Highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle Tarrasch/zsh-bd
+antigen bundle zpm-zsh/clipboard
+antigen bundle ChrisPenner/copy-pasta
+antigen theme eendroroy/alien
+
+antigen apply
+
 ## Load Plugins
 ##
 source $(dirname ${(%):-%x})/plugins/zsh-dotenv/dotenv.plugin.zsh
-source $(dirname ${(%):-%x})/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(dirname ${(%):-%x})/plugins/zsh-bd/bd.zsh
-source $(dirname ${(%):-%x})/plugins/zsh-clipboard/clipboard.plugin.zsh
-source $(dirname ${(%):-%x})/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(dirname ${(%):-%x})/plugins/zsh-copy-pasta/copy-pasta.plugin.zsh
-source $(dirname ${(%):-%x})/plugins/alien/alien.zsh
 source /etc/profile.d/autojump.zsh
 
 ## Load configuration files
