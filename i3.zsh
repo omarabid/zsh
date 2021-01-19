@@ -1,5 +1,4 @@
 # Start i3
-# TODO: This probably should go somewhere else. Have nothing to do with zsh
 
 # 1 - Main World
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]];
