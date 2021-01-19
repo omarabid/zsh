@@ -7,6 +7,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle Tarrasch/zsh-bd
 antigen bundle zpm-zsh/clipboard
 antigen bundle ChrisPenner/copy-pasta
+antigen bundle desyncr/auto-ls
 antigen theme romkatv/powerlevel10k
 
 antigen apply
@@ -26,6 +27,6 @@ for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 bindkey "^[OC" autosuggest-accept
 
 ## Clear terminal
-clear
+#clear
 
 source $(dirname ${(%):-%x})/i3.zsh
