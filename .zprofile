@@ -20,7 +20,7 @@ source /etc/profile.d/autojump.zsh
 ##
 for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 
-source $(dirname ${(%):-%x})/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source $(dirname ${(%):-%x})/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # custom keybinds
 bindkey "^[OC" autosuggest-accept
