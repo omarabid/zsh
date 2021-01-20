@@ -21,6 +21,15 @@ source /etc/profile.d/autojump.zsh
 ##
 for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 
+##
+## TODO: move from here
+##
+## Custom function for auto-ls
+AUTO_LS_COMMANDS=(exa)
+auto-ls-exa () {
+    exa -l
+}
+
 #source $(dirname ${(%):-%x})/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # custom keybinds
