@@ -21,6 +21,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen apply
 
+ZSH_AUTOSUGGEST_STRATEGY=(history)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 ##
 ## TODO: move from here
 ##
