@@ -27,7 +27,7 @@ for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 ## Custom function for auto-ls
 AUTO_LS_COMMANDS=(exa)
 auto-ls-exa () {
-    exa -l
+    exa -la
 }
 
 #source $(dirname ${(%):-%x})/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
