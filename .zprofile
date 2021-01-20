@@ -1,25 +1,25 @@
+## Load configuration files
+##
+for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
+
 # Load Antigen plugin manager
 source $(dirname ${(%):-%x})/antigen/antigen.zsh
 
-# Syntax Highlighting
+## Custom Plugins 
+source $(dirname ${(%):-%x})/plugins/zsh-dotenv/dotenv.plugin.zsh
+source /etc/profile.d/autojump.zsh
+
+## Antigen Plugins 
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle Tarrasch/zsh-bd
 antigen bundle zpm-zsh/clipboard
 antigen bundle ChrisPenner/copy-pasta
 antigen bundle desyncr/auto-ls
 antigen theme romkatv/powerlevel10k
+antigen bundle Aloxaf/fzf-tab
+antigen bundle zsh-users/zsh-autosuggestions
 
 antigen apply
-
-## Load Plugins
-##
-source $(dirname ${(%):-%x})/plugins/zsh-dotenv/dotenv.plugin.zsh
-source /etc/profile.d/autojump.zsh
-
-## Load configuration files
-##
-for config ($(dirname ${(%):-%x})/config/*.zsh) source $config
 
 ##
 ## TODO: move from here
@@ -35,7 +35,5 @@ auto-ls-exa () {
 # custom keybinds
 bindkey "^[OC" autosuggest-accept
 
-## Clear terminal
-#clear
-
+# i3 windows
 source $(dirname ${(%):-%x})/i3.zsh
