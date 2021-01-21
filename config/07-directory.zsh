@@ -6,4 +6,4 @@ setopt pushdminus
 
 # Run exa after cd
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ source_env; }
+#add-zsh-hook -Uz chpwd (){ source_env; }
