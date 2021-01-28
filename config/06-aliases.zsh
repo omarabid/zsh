@@ -11,4 +11,4 @@ alias c='cointop' # Crypto Quotes
 alias speed='speed-test' # npm install --global speed-test
 alias cpu='glances' # pip3 install glances
 alias gat='grv' # brew install grv
-
+alias terraform='env $(cat .env) terraform'
